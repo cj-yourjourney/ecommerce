@@ -29,7 +29,7 @@ function HomeScreen() {
   return (
     <div>
       {!keyword && <ProductCarousel />}
-      <h1>Latest Products</h1>
+      <h1>New Products</h1>
       {loading ? (
         <Loader />
       ) : error ? (
