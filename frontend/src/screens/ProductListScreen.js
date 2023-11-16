@@ -4,7 +4,7 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 // import Paginate from "../components/Paginate";
 import {
   listProducts,
@@ -37,7 +37,7 @@ function ProductListScreen() {
     success: successCreate,
     product: createdProduct,
   } = productCreate;
-
+  
   useEffect(() => {
     
     dispatch({type: PRODUCT_CREATE_RESET})

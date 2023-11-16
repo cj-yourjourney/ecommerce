@@ -4,6 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userAction";
 import { Link } from "react-router-dom";
+import SearchBox from "./SearchBox";
 
 function Header() {
   const userLogin = useSelector((state) => state.userLogin);
@@ -25,6 +26,7 @@ function Header() {
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <SearchBox />
             <Nav className="me-auto">
               <LinkContainer to="/cart">
                 <Nav.Link>
