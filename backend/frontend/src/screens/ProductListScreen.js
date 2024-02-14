@@ -105,7 +105,7 @@ function ProductListScreen() {
             </thead>
 
             <tbody>
-              {products.map((product) => (
+              { products ? products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
                   <td>{product.name}</td>
@@ -129,7 +129,7 @@ function ProductListScreen() {
                     </Button>
                   </td>
                 </tr>
-              ))}
+              )) : null }
             </tbody>
           </Table>
         </div>
