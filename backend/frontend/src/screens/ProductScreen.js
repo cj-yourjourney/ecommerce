@@ -31,6 +31,7 @@ function ProductScreen({}) {
 
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+  console.log('this is produce',product)
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -166,11 +167,13 @@ function ProductScreen({}) {
           <Row>
             <Col md={6}>
               <h4 className="my-5">Review</h4>
-              {product.reviews.length === 0 && (
+
+              {product.reviews && product.reviews.length === 0 && (
                 <Message variant="info">No Review</Message>
               )}
+
               <ListGroup variant="flush">
-                {product.reviews.map((review) => (
+                {product.reviews && product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} color="#f8e825" />

@@ -1,4 +1,5 @@
 
+from django.http import Http404
 from rest_framework.decorators import api_view, permission_classes
 from base.models import Product, Review
 from base.serializers import ProductSerializer
@@ -10,7 +11,7 @@ from django.core.paginator import PageNotAnInteger, EmptyPage, Paginator
 
 @api_view(["GET"])
 def getProducts(request):
-    
+
     query = request.query_params.get('keyword')
 
     if query == None:
@@ -36,15 +37,17 @@ def getProducts(request):
     page = int(page)
 
     serializer = ProductSerializer(products, many=True)
-    
+
     return Response({'products': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
 
 @api_view(['GET'])
 def getProduct(request, pk):
+
     product = Product.objects.get(_id=pk)
     serializer = ProductSerializer(product, many=False)
-    return Response(serializer.data)
+
+    return Response(serializer.data, content_type='application/json')
 
 
 @api_view(['DELETE'])
